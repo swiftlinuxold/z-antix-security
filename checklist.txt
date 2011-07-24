@@ -1,0 +1,1 @@
+Become root and enter "ufw status" to verify that the firewall is activated.

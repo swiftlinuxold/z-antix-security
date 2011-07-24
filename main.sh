@@ -22,23 +22,7 @@ else
 	DIR_DEVELOP=/usr/local/bin/develop 
 fi
 
-
-
-
-
-echo "Replacing the SLiM settings"
-rm /etc/slim.conf
-cp $DIR_DEVELOP/slim/etc/slim.conf /etc
-if [ $IS_CHROOT -eq 0 ]; then
-	chown $USERNAME:users /etc/slim.conf
-else
-  	chown demo:users /etc/slim.conf
-fi
-
-rm /usr/share/slim/slim.template
-cp $DIR_DEVELOP/slim/usr_share_slim/slim.template /usr/share/slim
-if [ $IS_CHROOT -eq 0 ]; then
-	chown $USERNAME:users /usr/share/slim/slim.template
-else
-  	chown demo:users /usr/share/slim/slim.template
-fi
+echo "Setting UFW firewall to be activated by default"
+rm /etc/ufw/ufw.conf
+cp $DIR_DEVELOP/security/etc_ufw/ufw.conf /etc/ufw/
+chown root:root /etc/ufw/ufw.conf
