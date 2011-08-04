@@ -15,7 +15,7 @@ DIR_DEVELOP=""
 # The remastering process uses chroot mode.
 # Check to see if this script is operating in chroot mode.
 # /srv directory only exists in chroot mode
-if [-d "/srv"]; then
+if [ -d "/srv" ]; then
 	IS_CHROOT=1 # in chroot mode
 	DIR_DEVELOP=/usr/local/bin/develop 
 else
@@ -23,9 +23,9 @@ else
 	DIR_DEVELOP=/home/$USERNAME/develop 
 fi
 
-exit 0
-
 echo "Setting UFW firewall to be activated by default"
 rm /etc/ufw/ufw.conf
 cp $DIR_DEVELOP/security/etc_ufw/ufw.conf /etc/ufw/
 chown root:root /etc/ufw/ufw.conf
+
+exit 0
